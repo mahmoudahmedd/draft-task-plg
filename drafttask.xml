@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+	<name>plg_system_draft_task</name>
+	<author>Mahmoud Ahmed</author>
+	<creationDate>April 2021</creationDate>
+	<copyright>(C) 2021 Open Source Matters, Inc.</copyright>
+	<authorEmail>mahmoud_Ahmed@stud.fci-cu.edu.eg</authorEmail>
+	<authorUrl>www.mahmoud-ahmed.me</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_PROGRAMING_TASK_DESCRIPTION</description>
+	<media folder="media" destination="plg_system_draft_task">
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+    <install>
+         <sql>
+             <file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
+         </sql>
+    </install>
+	<files>
+		<filename plugin="drafttask">drafttask.php</filename>
+        <folder>sql</folder> 
+	</files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_drafttask.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_system_drafttask.sys.ini</language>
+    </languages>
+	<config>
+        <fields name="params">
+            <fieldset name="basic" label="General">
+                <field
+                    name="type_of_law"
+                    type="radio"
+                    label="select the type of law needed for your site"
+                    default="GDPR"
+                    required="true"
+                    class="btn-group"
+                >
+                    <option value="GDPR">GDPR</option>
+                    <option value="CCPA">CCPA</option>
+                    <option value="GDPR_CCPA">GDPR and CCPA</option>
+                </field>
+              
+                <field
+                    name="auto_hide"
+                    type="radio"
+                    label="Auto hide on"
+                    default="delay"
+                    required="true"
+                    class="btn-group"
+                >
+                    <option value="delay">delay</option>
+                    <option value="scroll">scroll</option>
+                </field>
+
+                <field
+                    name="cookie_lifetime"
+                    type="number"
+                    label="Cookie lifetime"
+                    default="60"
+                    filter="integer"
+                    required="true"
+                />
+            </fieldset>
+
+            <fieldset name="customize_cookie" label="Customize cookie">
+                <field 
+                    name="message_header" 
+                    type="text" size="40" 
+                    label="Message Header:" 
+                    description="Enter a message header." 
+                />
+                <field 
+                    name="message" 
+                    type="textarea" 
+                    label="Message:" 
+                    description="Enter a message."
+                />
+                <field 
+                    name="cookie_bar_colour" 
+                    type="color" 
+                    default="#eee" 
+                    format="rgba" 
+                    label="Cookie bar colour"
+                    description="Cookie bar colour." 
+                />
+                <field 
+                    name="text_colour" 
+                    type="color" 
+                    default="#eee" 
+                    format="rgba" 
+                    label="Text Colour"
+                    description="Text Colour." 
+                />
+                <field
+                    name="shown_in"
+                    type="radio"
+                    label="Cookie notice is shown in"
+                    default="delay"
+                    required="true"
+                    class="btn-group"
+                >
+                    <option value="banner">Banner</option>
+                    <option value="pop_up">Pop-up</option>
+                </field>
+                <field
+                    name="position"
+                    type="radio"
+                    label="Position"
+                    default="delay"
+                    required="true"
+                    class="btn-group"
+                >
+                    <option value="header">Header</option>
+                    <option value="footer">Footer</option>
+                </field>
+            </fieldset> 
+        </fields>
+    </config>
+</extension>
